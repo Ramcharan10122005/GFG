@@ -8,25 +8,24 @@ class Solution {
   public:
     void sort012(vector<int>& arr) {
         // code here
-        int z=0,o=0,t=0;
-        for(int num:arr){
-            if(num==0)
-            z++;
-            else if(num==1)
-            o++;
-            else
-            t++;
+         int low = 0, mid = 0, high = arr.size() - 1;
+
+    while (mid <= high) {
+        switch (arr[mid]) {
+            case 0:
+                swap(arr[low], arr[mid]);
+                low++;
+                mid++;
+                break;
+            case 1:
+                mid++;
+                break;
+            case 2:
+                swap(arr[mid], arr[high]);
+                high--;
+                break;
         }
-        int ind=0;
-        while(z--){
-            arr[ind++]=0;
-        }
-        while(o--){
-            arr[ind++]=1;
-        }
-        while(t--){
-            arr[ind++]=2;
-        }
+    }
     }
 };
 
@@ -56,6 +55,7 @@ int main() {
         }
 
         cout << endl;
+        cout << "~" << endl;
     }
     return 0;
 }
